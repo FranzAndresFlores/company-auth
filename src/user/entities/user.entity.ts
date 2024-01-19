@@ -1,19 +1,29 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { DBLength } from "src/company-common/configs/db.length";
 
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
-    id: number;
+    idUser: number;
 
-    @Column({ length: 30 })
-    firstname: string;
+    @Column('varchar', { length: DBLength.name, comment: 'Nombre del usuario' })
+    firstName: string;
 
-    @Column('varchar', { length: 50, comment: 'Apellido del usuario' })
-    lastname: string;
+    @Column('varchar', { length: DBLength.name, comment: 'Apellido del usuario' })
+    lastName: string;
+
+    @Column('varchar', { length: DBLength.dni, comment: 'Cédula del usuario' })
+    dni: string;
 
     @Column({ type: 'int', nullable: true, precision: 2, unsigned: true })
     age: number;
 
     @Column({ type: 'boolean', default: true })
     isActive: boolean;
+
+    @CreateDateColumn({ type: 'timestamp' })
+    createdAt: Date;
+
+    @UpdateDateColumn({ type: 'timestamp' })
+    updatedAt: Date;
 }
