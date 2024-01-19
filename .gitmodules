@@ -1,0 +1,3 @@
+[submodule "src/company-common"]
+	path = src/company-common
+	url = https://github.com/FranzAndresFlores/company-common
