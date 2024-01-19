@@ -1,11 +1,19 @@
 import { IsNotEmpty, IsOptional } from "class-validator";
+import { Account } from "src/admin/account/entities/account.entity";
+import { requiredMessage } from "src/company-common/configs/message";
 
 export class CreateUserDto {
-    @IsNotEmpty({ message: 'El campo nombre es requerido' })
-    firstname: string;
+    @IsNotEmpty({ message: requiredMessage('nombre') })
+    firstName: string;
 
-    @IsNotEmpty({ message: 'El campo apellido es requerido' })
-    lastname: string;
+    @IsNotEmpty({ message: requiredMessage('apellido') })
+    lastName: string;
+
+    @IsNotEmpty({ message: requiredMessage('cédula') })
+    dni: string;
+
+    @IsNotEmpty({ message: requiredMessage('cuenta') })
+    account: Account;
 
     @IsOptional()
     age: number;
