@@ -5,7 +5,9 @@ import * as dotenv from 'dotenv';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
+import { UserModule } from './admin/user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { AccountModule } from './admin/account/account.module';
 
 dotenv.config();
 
@@ -25,7 +27,9 @@ dotenv.config();
       autoLoadEntities: true,
       synchronize: process.env.SYNC === 'TRUE',
     }),
+    AuthModule,
     UserModule,
+    AccountModule
   ],
   controllers: [AppController],
   providers: [AppService],
