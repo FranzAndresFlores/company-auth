@@ -25,12 +25,12 @@ export class UserService {
   }
 
   async findOne(id: number) {
-    const user = await this.userRepository.findOne({ where: { id } });
+    const user = await this.userRepository.findOne({ where: { idUser: id } });
     return { user };
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    const user = await this.userRepository.preload({ id: id, ...updateUserDto });
+    const user = await this.userRepository.preload({ idUser: id, ...updateUserDto });
     if (user) {
       await this.userRepository.save(user);
       return { user }

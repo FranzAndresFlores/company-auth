@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { DBLength } from "src/company-common/configs/db.length";
+import { Account } from "src/admin/account/entities/account.entity";
 
 @Entity()
 export class User {
@@ -26,4 +27,8 @@ export class User {
 
     @UpdateDateColumn({ type: 'timestamp' })
     updatedAt: Date;
+
+    @OneToOne(() => Account, (account: Account) => account.user, { cascade: true })
+    @JoinColumn({ name: 'idAccount' })
+    account: Account;
 }

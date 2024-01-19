@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
+import { UserModule } from './admin/user/user.module';
 
 dotenv.config();
 
